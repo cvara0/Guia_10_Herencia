@@ -61,7 +61,7 @@ public abstract class Electrodomestico {
     es correcta, sino es correcta usara la letra F por defecto. Este método se debe
     invocar al crear el objeto y no será visible.
     */
-    public char comprobarConsumoEnergetico(Character letra){
+    private char comprobarConsumoEnergetico(Character letra){
         letra=Character.toUpperCase(letra);
        // if(letra<'A' || letra>'F'){
          //   letra='F';
@@ -77,7 +77,7 @@ public abstract class Electrodomestico {
     está en mayúsculas o en minúsculas. Este método se invocará al crear el
     objeto y no será visible.
     */
-    public String comprobarColor(String color){
+    private String comprobarColor(String color){
         List<String> coloresDisponibles=new ArrayList<>(Arrays.asList("BLANCO","NEGRO", "ROJO", "AZUL", "GRIS"));
         color=color.toUpperCase();
         //if (!coloresDisponibles.contains(color))
@@ -90,23 +90,11 @@ public abstract class Electrodomestico {
     electrodoméstico, también llama los métodos para comprobar el color y el
     consumo. Al precio se le da un valor base de $1000.
     */
-    public void crearElectrodomestico(){
-        Scanner entrada = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n").useLocale(Locale.US);
-        System.out.println("Ingresando a clase padre\n");
-        System.out.print("Ingrese precio:");
-        this.precio=entrada.nextDouble();
-        this.precio=(this.precio<1000)?1000:this.precio;
-        System.out.print("Ingrese color:");
-        this.color=entrada.next();
-        this.color=comprobarColor(this.color);
-        System.out.print("Ingrese consumo energético:");
-        this.consumoEnergetico=entrada.next().charAt(0);
-        this.consumoEnergetico=comprobarConsumoEnergetico(this.consumoEnergetico);
-        System.out.print("Ingrese peso:");
-        this.peso=entrada.nextDouble();
-        System.out.println("Saliendo de clase padre\n");
-       
-        
+    public void crearElectrodomestico(double precio,String color,char consumoEnergetico,double peso){
+        this.precio=(precio<1000)?1000:precio;
+        this.color=comprobarColor(color);
+        this.consumoEnergetico=comprobarConsumoEnergetico(consumoEnergetico);
+        this.peso=peso;
     }
     /*
     Método precioFinal(): según el consumo energético y su tamaño, aumentará

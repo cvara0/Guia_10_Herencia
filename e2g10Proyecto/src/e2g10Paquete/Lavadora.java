@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 
 public final class Lavadora extends Electrodomestico{
+   
     private double carga;
 //
     public Lavadora() {
@@ -29,14 +30,15 @@ public final class Lavadora extends Electrodomestico{
     clase padre, lo utilizamos para llenar los atributos heredados del padre y
     después llenamos el atributo propio de la lavadora.
     */
-    public void crearLavadora (){
-        Scanner entrada = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n").useLocale(Locale.US);
-        System.out.println("Creando lavadora\n");
-        super.crearElectrodomestico();
-        System.out.print("Ingrese capacidad de lavadora(Kg): ");
-        carga=entrada.nextDouble(); 
-        System.out.println("Lavadora crada\n");
+
+   
+    public void crearLavadora(double precio,String color,char consumoEnergetico,double peso,double carga) {
+        
+        super.crearElectrodomestico(precio,color,consumoEnergetico,peso);
+        this.carga=carga; 
     }
+    
+    
     //
     /*
     Método precioFinal(): este método será heredado y se le sumará la siguiente
