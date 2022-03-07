@@ -12,7 +12,6 @@ public class e4G10Main {
         System.out.println("Perimetro circunferencia: "+circ1.calcularPerimetro());
         System.out.println("Area rectangulo: "+rect1.calcularArea());
         System.out.println("Area circunferencia: "+circ1.calcularArea());
-      
     }
     
 }
