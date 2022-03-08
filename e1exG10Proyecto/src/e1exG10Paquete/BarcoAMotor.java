@@ -22,5 +22,8 @@ public class BarcoAMotor extends Barco {
     public void setPotencia(double potencia) {
         this.potencia = potencia;
     }
-    
+    @Override
+    public double calcularModulo() {
+        return super.calcularModulo()+this.potencia;
+    }
 }

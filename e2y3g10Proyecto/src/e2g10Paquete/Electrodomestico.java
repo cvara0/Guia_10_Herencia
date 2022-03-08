@@ -105,6 +105,5 @@ public abstract class Electrodomestico implements OperacionesElectrodomestico{
         this.precio=(this.peso>=80)?(this.precio+1000):this.precio;
         
     } 
-    
-    
+   
 }

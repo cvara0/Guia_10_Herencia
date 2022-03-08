@@ -22,5 +22,8 @@ public class YateDeLujo extends BarcoAMotor{
     public void setNroCamarotes(int nroCamarotes) {
         this.nroCamarotes = nroCamarotes;
     }
-    
+    @Override
+    public double calcularModulo() {
+        return super.calcularModulo()+this.nroCamarotes;
+    }
 }

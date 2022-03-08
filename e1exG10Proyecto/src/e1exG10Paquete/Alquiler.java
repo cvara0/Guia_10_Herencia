@@ -5,20 +5,19 @@ import java.time.LocalDate;
 import java.time.Period;
 
 
-public class Alquiler{
+public class Alquiler<E>{
     
     private Cliente datosCliente;
-    private Barco datosBarco;
-    private LocalDate fechaAlquiler;
+    private E barcoAlquilado;
+    private final LocalDate fechaAlquiler=LocalDate.now();
     private LocalDate fechaDevolucion;
 
     public Alquiler() {
     }
 
-    public Alquiler(Cliente datosCliente, Barco datosBarco, LocalDate fechaAlquiler, LocalDate fechaDevolucion) {
+    public Alquiler(Cliente datosCliente, E barcoAlquilado, LocalDate fechaDevolucion) {
         this.datosCliente = datosCliente;
-        this.datosBarco = datosBarco;
-        this.fechaAlquiler = fechaAlquiler;
+        this.barcoAlquilado = barcoAlquilado;
         this.fechaDevolucion = fechaDevolucion;
     }
 
@@ -30,20 +29,12 @@ public class Alquiler{
         this.datosCliente = datosCliente;
     }
 
-    public Barco getDatosBarco() {
-        return datosBarco;
+    public E getBarcoAlquilado() {
+        return barcoAlquilado;
     }
 
-    public void setDatosBarco(Barco datosBarco) {
-        this.datosBarco = datosBarco;
-    }
-
-    public LocalDate getFechaAlquiler() {
-        return fechaAlquiler;
-    }
-
-    public void setFechaAlquiler(LocalDate fechaAlquiler) {
-        this.fechaAlquiler = fechaAlquiler;
+    public void setBarcoAlquilado(E barcoAlquilado) {
+        this.barcoAlquilado = barcoAlquilado;
     }
 
     public LocalDate getFechaDevolucion() {
@@ -54,10 +45,13 @@ public class Alquiler{
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    
-    public double calcularAlquiler() {
-        return Period.between(this.fechaAlquiler, this.fechaDevolucion).getDays()*datosBarco.calcularModulo();    
+    public int cantidadDeDias(){
+        return Period.between(this.fechaAlquiler, this.fechaDevolucion).getDays();
     }
+    
+    /*public double calcularAlquiler() {
+        return cantidadDeDias()*tipoDeBarco.calcularModulo();    
+    }*/
    
    
     

@@ -22,5 +22,10 @@ public class Velero extends Barco {
     public void setNroDeMastiles(int nroDeMastiles) {
         this.nroDeMastiles = nroDeMastiles;
     }
+
+    @Override
+    public double calcularModulo() {
+        return super.calcularModulo()+this.nroDeMastiles;
+    }
     
 }
