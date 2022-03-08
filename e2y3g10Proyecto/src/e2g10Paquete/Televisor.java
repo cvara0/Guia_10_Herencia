@@ -1,8 +1,5 @@
 package e2g10Paquete;
 
-import java.util.Locale;
-import java.util.Scanner;
-
 public final class Televisor extends Electrodomestico {
 
     private double resolucion;

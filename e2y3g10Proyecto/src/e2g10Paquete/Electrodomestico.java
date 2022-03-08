@@ -4,11 +4,9 @@ package e2g10Paquete;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 
 
-public abstract class Electrodomestico {
+public abstract class Electrodomestico implements OperacionesElectrodomestico{
     protected Double precio; //publico para la familia, privado para los externos
     protected String color; 
     protected Character consumoEnergetico;
@@ -61,14 +59,9 @@ public abstract class Electrodomestico {
     es correcta, sino es correcta usara la letra F por defecto. Este método se debe
     invocar al crear el objeto y no será visible.
     */
-    private char comprobarConsumoEnergetico(Character letra){
-        letra=Character.toUpperCase(letra);
-       // if(letra<'A' || letra>'F'){
-         //   letra='F';
-        //}
-        letra=(letra<'A' || letra>'F')?'F':letra;
-        return letra;
-            
+    @Override
+    public char comprobarConsumoEnergetico(Character letra){
+        return(Character.toUpperCase(letra)<'A' || Character.toUpperCase(letra)>'F')?'F':Character.toUpperCase(letra);  
     }
     /*
     Método comprobarColor(String color): comprueba que el color es correcto, y
@@ -77,19 +70,17 @@ public abstract class Electrodomestico {
     está en mayúsculas o en minúsculas. Este método se invocará al crear el
     objeto y no será visible.
     */
-    private String comprobarColor(String color){
+    @Override
+    public String comprobarColor(String color){
         List<String> coloresDisponibles=new ArrayList<>(Arrays.asList("BLANCO","NEGRO", "ROJO", "AZUL", "GRIS"));
-        color=color.toUpperCase();
-        //if (!coloresDisponibles.contains(color))
-           // color="BLANCO"; 
-        color=(!coloresDisponibles.contains(color))?"BLANCO":color;
-        return color;
+        return (!coloresDisponibles.contains(color.toUpperCase()))?"BLANCO":color.toUpperCase();
     }
     /*
     Metodo crearElectrodomestico(): le pide la información al usuario y llena el
     electrodoméstico, también llama los métodos para comprobar el color y el
     consumo. Al precio se le da un valor base de $1000.
     */
+    @Override
     public void crearElectrodomestico(double precio,String color,char consumoEnergetico,double peso){
         this.precio=(precio<1000)?1000:precio;
         this.color=comprobarColor(color);
@@ -100,6 +91,7 @@ public abstract class Electrodomestico {
     Método precioFinal(): según el consumo energético y su tamaño, aumentará
     el valor del precio. Esta es la lista de precios:
     */
+    @Override
     public void precioFinal(){
         this.precio=(this.consumoEnergetico=='A')?(this.precio+1000):this.precio;
         this.precio=(this.consumoEnergetico=='B')?(this.precio+800):this.precio;

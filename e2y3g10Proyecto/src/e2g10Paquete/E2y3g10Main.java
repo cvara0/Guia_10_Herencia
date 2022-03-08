@@ -3,8 +3,6 @@ package e2g10Paquete;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class E2y3g10Main {
 
@@ -13,8 +11,6 @@ public class E2y3g10Main {
         Televisor televisor1 = new Televisor();
         Lavadora lavadora2 = new Lavadora();
         Televisor televisor2 = new Televisor();
-        //crearLavadora(double precio,String color,char consumoEnergetico,double peso,double carga)
-        //crearTelevisor(double precio,String color,char consumoEnergetico,double peso,double resolucion,boolean sintonizadorTDT) {
 
         lavadora1.crearLavadora(1200, "negro", 'd', 23, 5);
         televisor1.crearTelevisor(5000, "negro", 'a', 5, 46, true);
